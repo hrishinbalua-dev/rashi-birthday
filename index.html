@@ -14,9 +14,14 @@ body{
   text-align:center;
 }
 
+h1{
+  margin:20px 10px;
+  font-size:32px;
+}
+
 button{
-  margin:8px;
-  padding:12px 20px;
+  margin:6px;
+  padding:12px 22px;
   border:none;
   border-radius:25px;
   background:#fff;
@@ -46,33 +51,34 @@ audio{
   width:90%;
   max-width:330px;
   margin:20px auto;
+  display:block;
 }
 </style>
 
 <script>
-/* TAB SWITCHING (OLD BEHAVIOUR) */
+function stopAll(){
+  document.querySelectorAll("audio").forEach(a=>{
+    a.pause();
+    a.currentTime = 0;
+  });
+}
+
 function show(id){
+  stopAll();
+
   document.querySelectorAll(".section").forEach(s=>{
     s.classList.remove("active");
   });
-  document.getElementById(id).classList.add("active");
+
+  const section = document.getElementById(id);
+  section.classList.add("active");
+
+  // 🔥 Auto-play music for EVERY tab (Home included)
+  const audio = section.querySelector("audio");
+  if(audio){
+    audio.play().catch(()=>{});
+  }
 }
-
-/* 🔥 KEY FIX: ONLY ONE AUDIO AT A TIME */
-document.addEventListener("DOMContentLoaded", () => {
-  const audios = document.querySelectorAll("audio");
-
-  audios.forEach(audio => {
-    audio.addEventListener("play", () => {
-      audios.forEach(other => {
-        if(other !== audio){
-          other.pause();
-          other.currentTime = 0;
-        }
-      });
-    });
-  });
-});
 </script>
 </head>
 
@@ -98,10 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
     Positivity, aura aur joy ka dusra naam Rashi 💫
   </p>
 
-  <p><b>Happy Birthday Rashi ❤️</b><br>
-  Keep spreading happiness like you always do 🌸</p>
+  <p>
+    <b>Happy Birthday Rashi ❤️</b><br>
+    Keep spreading happiness like you always do 🌸
+  </p>
 
-  <audio controls>
+  <audio>
     <source src="shivammmm_jbp____1766428615075.mp3" type="audio/mpeg">
   </audio>
 </div>
@@ -114,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <img src="slay/slay3.jpg">
   <img src="slay/slay4.jpg">
 
-  <audio controls>
+  <audio>
     <source src="gwadar__rides_1766428813935.mp3" type="audio/mpeg">
   </audio>
 </div>
@@ -129,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <img src="apsara/apsara5.jpg">
   <img src="apsara/apsara6.jpg">
 
-  <audio controls>
+  <audio>
     <source src="arishxeditzz_1766470963367.mp4" type="video/mp4">
   </audio>
 </div>
@@ -142,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <img src="favourite/fav3.jpg">
   <img src="favourite/fav4.jpg">
 
-  <audio controls>
+  <audio>
     <source src="hiphop_gram__1766427279787.mp3" type="audio/mpeg">
   </audio>
 </div>
