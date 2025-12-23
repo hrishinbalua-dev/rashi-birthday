@@ -14,66 +14,47 @@ body{
   text-align:center;
 }
 
-h1{margin:20px 10px;font-size:32px;}
-p{font-size:16px;line-height:1.6;}
-
 button{
-  margin:10px;
-  padding:14px 26px;
+  margin:8px;
+  padding:12px 20px;
   border:none;
-  border-radius:30px;
+  border-radius:25px;
   background:#fff;
-  color:#ff5f8a;
+  color:#ff5f8f;
   font-size:16px;
-  font-weight:600;
+  cursor:pointer;
 }
 
-.section{display:none;padding:20px;}
-.section.active{display:block;}
+.section{
+  display:none;
+  padding:20px;
+}
+
+.section.active{
+  display:block;
+}
 
 img{
   width:90%;
-  max-width:320px;
-  border-radius:18px;
-  margin:12px 0;
-}
-
-.audio-box{
-  background:#ffffffcc;
+  max-width:330px;
   border-radius:20px;
-  padding:12px;
   margin:15px auto;
-  max-width:350px;
+  display:block;
 }
 
-/* BIG FIXED PLAY BUTTON */
-#homePlayBtn{
-  position:sticky;
-  top:10px;
-  z-index:10;
-  background:#ff5f8a;
-  color:#fff;
+audio{
+  width:90%;
+  max-width:330px;
+  margin:20px auto;
 }
 </style>
 
 <script>
-function stopAll(){
-  document.querySelectorAll("audio").forEach(a=>{
-    a.pause();
-    a.currentTime=0;
-  });
-}
-
 function show(id){
-  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".section").forEach(s=>{
+    s.classList.remove("active");
+  });
   document.getElementById(id).classList.add("active");
-  stopAll();
-}
-
-function playHomeMusic(){
-  stopAll();
-  const a=document.getElementById("homeAudio");
-  a.play();
 }
 </script>
 </head>
@@ -87,12 +68,8 @@ function playHomeMusic(){
 <button onclick="show('apsara')">🌸 Apsara</button>
 <button onclick="show('fav')">💖 Favourite</button>
 
-<!-- HOME -->
+<!-- HOME (FIXED) -->
 <div id="home" class="section active">
-
-  <!-- FIXED PLAY BUTTON -->
-  <button id="homePlayBtn" onclick="playHomeMusic()">▶️ Play Home Music</button>
-
   <p>
     Saal tha 1997, charo aur badhti negativity dekhkar bhagwan se sabse zyada
     positive, cheerful, lively, bindaas ladki ko banaya, aur isi tarah
@@ -101,19 +78,16 @@ function playHomeMusic(){
 
   <p>
     Rashi jo har jagah jaati hai waha khushiya fail jaati hai.
-    Positivity, aura and joy ka dusra naam Rashi 💫
+    Positivity, aura aur joy ka dusra naam Rashi 💫
   </p>
 
-  <p>
-    <b>Happy Birthday Rashi ❤️</b><br>
-    Keep spreading happiness like you always do 🌸
-  </p>
+  <p><b>Happy Birthday Rashi ❤️</b><br>
+  Keep spreading happiness like you always do 🌸</p>
 
-  <div class="audio-box">
-    <audio id="homeAudio" controls preload="auto">
-      <source src="shivammmm_jbp___1766428615075.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+  <!-- HOME AUDIO FIX -->
+  <audio id="homeAudio" controls>
+    <source src="shivammmm_jbp____1766428615075.mp3" type="audio/mpeg">
+  </audio>
 </div>
 
 <!-- SLAY -->
@@ -124,11 +98,9 @@ function playHomeMusic(){
   <img src="slay/slay3.jpg">
   <img src="slay/slay4.jpg">
 
-  <div class="audio-box">
-    <audio controls>
-      <source src="gwadar__rides_1766428813935.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+  <audio controls>
+    <source src="gwadar__rides_1766428813935.mp3" type="audio/mpeg">
+  </audio>
 </div>
 
 <!-- APSARA -->
@@ -141,11 +113,9 @@ function playHomeMusic(){
   <img src="apsara/apsara5.jpg">
   <img src="apsara/apsara6.jpg">
 
-  <div class="audio-box">
-    <audio controls>
-      <source src="arishxeditzz_1766470963367.mp4" type="audio/mp4">
-    </audio>
-  </div>
+  <audio controls>
+    <source src="arishxeditzz_1766470963367.mp4" type="video/mp4">
+  </audio>
 </div>
 
 <!-- FAVOURITE -->
@@ -156,136 +126,9 @@ function playHomeMusic(){
   <img src="favourite/fav3.jpg">
   <img src="favourite/fav4.jpg">
 
-  <div class="audio-box">
-    <audio controls>
-      <source src="hiphop_gram_1766427279787.mp3" type="audio/mpeg">
-    </audio>
-  </div>
-</div>
-
-</body>
-</html>  border-radius:18px;
-  margin:10px 0;
-}
-
-.audio-box{
-  background:#ffffffaa;
-  border-radius:20px;
-  padding:12px;
-  margin-top:15px;
-}
-</style>
-
-<script>
-function stopAll(){
-  document.querySelectorAll("audio").forEach(a=>{
-    a.pause();
-    a.currentTime=0;
-  });
-}
-
-function show(id){
-  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  stopAll();
-
-  const a=document.querySelector("#"+id+" audio");
-  if(a){
-    a.load();
-    a.play().catch(()=>{});
-  }
-}
-
-function playHome(){
-  stopAll();
-  const a=document.getElementById("homeAudio");
-  a.load();
-  a.play().catch(()=>{});
-}
-</script>
-</head>
-
-<body>
-
-<h1>🎉 Happy Birthday Rashi 🎉</h1>
-
-<button onclick="show('home')">🎂 Home</button>
-<button onclick="show('slay')">🔥 Slay</button>
-<button onclick="show('apsara')">🌸 Apsara</button>
-<button onclick="show('fav')">💖 Favourite</button>
-
-<!-- HOME -->
-<div id="home" class="section active">
-  <p>
-    Saal tha 1997, charo aur badhti negativity dekhkar bhagwan se sabse zyada
-    positive, cheerful, lively, bindaas ladki ko banaya, aur isi tarah
-    <b>Rashi ji</b> ka janam hua ✨
-  </p>
-
-  <p>
-    Rashi jo har jagah jaati hai waha khushiya fail jaati hai.
-    Positivity, aura and joy ka dusra naam Rashi 💫
-  </p>
-
-  <p>
-    <b>Happy Birthday Rashi ❤️</b><br>
-    Keep spreading happiness like you always do 🌸
-  </p>
-
-  <button onclick="playHome()">▶️ Play Music</button>
-
-  <div class="audio-box">
-    <audio id="homeAudio" preload="auto">
-      <source src="shivammmm_jbp___1766428615075.mp3" type="audio/mpeg">
-    </audio>
-  </div>
-</div>
-
-<!-- SLAY -->
-<div id="slay" class="section">
-  <h2>🔥 Slay</h2>
-  <img src="slay/slay1.jpg">
-  <img src="slay/slay2.jpg">
-  <img src="slay/slay3.jpg">
-  <img src="slay/slay4.jpg">
-
-  <div class="audio-box">
-    <audio preload="auto">
-      <source src="gwadar__rides_1766428813935.mp3" type="audio/mpeg">
-    </audio>
-  </div>
-</div>
-
-<!-- APSARA -->
-<div id="apsara" class="section">
-  <h2>🌸 Apsara</h2>
-  <img src="apsara/apsara1.jpg">
-  <img src="apsara/apsara2.jpg">
-  <img src="apsara/apsara3.jpg">
-  <img src="apsara/apsara4.jpg">
-  <img src="apsara/apsara5.jpg">
-  <img src="apsara/apsara6.jpg">
-
-  <div class="audio-box">
-    <audio preload="auto">
-      <source src="arishxeditzz_1766470963367.mp4" type="audio/mp4">
-    </audio>
-  </div>
-</div>
-
-<!-- FAVOURITE -->
-<div id="fav" class="section">
-  <h2>💖 My Favourite of Yours</h2>
-  <img src="favourite/fav1.jpg">
-  <img src="favourite/fav2.jpg">
-  <img src="favourite/fav3.jpg">
-  <img src="favourite/fav4.jpg">
-
-  <div class="audio-box">
-    <audio preload="auto">
-      <source src="hiphop_gram_1766427279787.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+  <audio controls>
+    <source src="hiphop_gram__1766427279787.mp3" type="audio/mpeg">
+  </audio>
 </div>
 
 </body>
