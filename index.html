@@ -50,12 +50,29 @@ audio{
 </style>
 
 <script>
+/* TAB SWITCHING (OLD BEHAVIOUR) */
 function show(id){
   document.querySelectorAll(".section").forEach(s=>{
     s.classList.remove("active");
   });
   document.getElementById(id).classList.add("active");
 }
+
+/* 🔥 KEY FIX: ONLY ONE AUDIO AT A TIME */
+document.addEventListener("DOMContentLoaded", () => {
+  const audios = document.querySelectorAll("audio");
+
+  audios.forEach(audio => {
+    audio.addEventListener("play", () => {
+      audios.forEach(other => {
+        if(other !== audio){
+          other.pause();
+          other.currentTime = 0;
+        }
+      });
+    });
+  });
+});
 </script>
 </head>
 
@@ -68,7 +85,7 @@ function show(id){
 <button onclick="show('apsara')">🌸 Apsara</button>
 <button onclick="show('fav')">💖 Favourite</button>
 
-<!-- HOME (FIXED) -->
+<!-- HOME -->
 <div id="home" class="section active">
   <p>
     Saal tha 1997, charo aur badhti negativity dekhkar bhagwan se sabse zyada
@@ -84,8 +101,7 @@ function show(id){
   <p><b>Happy Birthday Rashi ❤️</b><br>
   Keep spreading happiness like you always do 🌸</p>
 
-  <!-- HOME AUDIO FIX -->
-  <audio id="homeAudio" controls>
+  <audio controls>
     <source src="shivammmm_jbp____1766428615075.mp3" type="audio/mpeg">
   </audio>
 </div>
