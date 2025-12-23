@@ -14,15 +14,18 @@ body{
   text-align:center;
 }
 
+h1{margin-top:20px;font-size:32px;}
+h2{margin-top:20px;}
+
 button{
   margin:8px;
   padding:12px 22px;
   border:none;
-  border-radius:25px;
+  border-radius:30px;
   background:#fff;
-  color:#ff5f8f;
+  color:#ff5f8a;
   font-size:16px;
-  cursor:pointer;
+  font-weight:600;
 }
 
 .section{display:none;padding:20px;}
@@ -30,22 +33,16 @@ button{
 
 img{
   width:90%;
-  max-width:300px;
-  border-radius:15px;
+  max-width:320px;
+  border-radius:18px;
   margin:10px 0;
 }
 
-audio{
-  width:90%;
-  max-width:350px;
+.audio-box{
+  background:#ffffffaa;
+  border-radius:20px;
+  padding:12px;
   margin-top:15px;
-}
-
-.message{
-  font-size:16px;
-  line-height:1.6;
-  max-width:500px;
-  margin:auto;
 }
 </style>
 
@@ -53,24 +50,27 @@ audio{
 function stopAll(){
   document.querySelectorAll("audio").forEach(a=>{
     a.pause();
-    a.currentTime = 0;
+    a.currentTime=0;
   });
 }
 
 function show(id){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
   stopAll();
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
 
-  const audio = document.querySelector(`#${id} audio`);
-  if(audio){
-    audio.play().catch(()=>{});
+  const a=document.querySelector("#"+id+" audio");
+  if(a){
+    a.load();
+    a.play().catch(()=>{});
   }
 }
 
 function playHome(){
-  const audio = document.getElementById("homeAudio");
-  audio.play();
+  stopAll();
+  const a=document.getElementById("homeAudio");
+  a.load();
+  a.play().catch(()=>{});
 }
 </script>
 </head>
@@ -86,22 +86,29 @@ function playHome(){
 
 <!-- HOME -->
 <div id="home" class="section active">
-  <div class="message">
-    Saal tha 1997, charo aur badhti negativity dekhkar bhagwan se sabse zyada positive,
-    cheerful, lively, bindaas ladki ko banaya, aur isi tarah <b>Rashi ji</b> ka janam hua ✨
-    <br><br>
+  <p>
+    Saal tha 1997, charo aur badhti negativity dekhkar bhagwan se sabse zyada
+    positive, cheerful, lively, bindaas ladki ko banaya, aur isi tarah
+    <b>Rashi ji</b> ka janam hua ✨
+  </p>
+
+  <p>
     Rashi jo har jagah jaati hai waha khushiya fail jaati hai.
     Positivity, aura and joy ka dusra naam Rashi 💫
-    <br><br>
+  </p>
+
+  <p>
     <b>Happy Birthday Rashi ❤️</b><br>
     Keep spreading happiness like you always do 🌸
-  </div>
+  </p>
 
   <button onclick="playHome()">▶️ Play Music</button>
 
-  <audio id="homeAudio" controls>
-    <source src="shivammmm_jbp___1766428615075.mp3" type="audio/mpeg">
-  </audio>
+  <div class="audio-box">
+    <audio id="homeAudio" preload="auto">
+      <source src="shivammmm_jbp___1766428615075.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 </div>
 
 <!-- SLAY -->
@@ -112,9 +119,11 @@ function playHome(){
   <img src="slay/slay3.jpg">
   <img src="slay/slay4.jpg">
 
-  <audio controls>
-    <source src="gwadar__rides_1766428813935.mp3" type="audio/mpeg">
-  </audio>
+  <div class="audio-box">
+    <audio preload="auto">
+      <source src="gwadar__rides_1766428813935.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 </div>
 
 <!-- APSARA -->
@@ -127,12 +136,14 @@ function playHome(){
   <img src="apsara/apsara5.jpg">
   <img src="apsara/apsara6.jpg">
 
-  <audio controls>
-    <source src="arishxeditzz_1766470963367.mp4" type="audio/mp4">
-  </audio>
+  <div class="audio-box">
+    <audio preload="auto">
+      <source src="arishxeditzz_1766470963367.mp4" type="audio/mp4">
+    </audio>
+  </div>
 </div>
 
-<!-- FAV -->
+<!-- FAVOURITE -->
 <div id="fav" class="section">
   <h2>💖 My Favourite of Yours</h2>
   <img src="favourite/fav1.jpg">
@@ -140,9 +151,11 @@ function playHome(){
   <img src="favourite/fav3.jpg">
   <img src="favourite/fav4.jpg">
 
-  <audio controls>
-    <source src="hiphop_gram__1766427279787.mp3" type="audio/mpeg">
-  </audio>
+  <div class="audio-box">
+    <audio preload="auto">
+      <source src="hiphop_gram_1766427279787.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 </div>
 
 </body>
