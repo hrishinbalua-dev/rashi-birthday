@@ -14,12 +14,12 @@ body{
   text-align:center;
 }
 
-h1{margin-top:20px;font-size:32px;}
-h2{margin-top:20px;}
+h1{margin:20px 10px;font-size:32px;}
+p{font-size:16px;line-height:1.6;}
 
 button{
-  margin:8px;
-  padding:12px 22px;
+  margin:10px;
+  padding:14px 26px;
   border:none;
   border-radius:30px;
   background:#fff;
@@ -35,6 +35,136 @@ img{
   width:90%;
   max-width:320px;
   border-radius:18px;
+  margin:12px 0;
+}
+
+.audio-box{
+  background:#ffffffcc;
+  border-radius:20px;
+  padding:12px;
+  margin:15px auto;
+  max-width:350px;
+}
+
+/* BIG FIXED PLAY BUTTON */
+#homePlayBtn{
+  position:sticky;
+  top:10px;
+  z-index:10;
+  background:#ff5f8a;
+  color:#fff;
+}
+</style>
+
+<script>
+function stopAll(){
+  document.querySelectorAll("audio").forEach(a=>{
+    a.pause();
+    a.currentTime=0;
+  });
+}
+
+function show(id){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  stopAll();
+}
+
+function playHomeMusic(){
+  stopAll();
+  const a=document.getElementById("homeAudio");
+  a.play();
+}
+</script>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday Rashi 🎉</h1>
+
+<button onclick="show('home')">🎂 Home</button>
+<button onclick="show('slay')">🔥 Slay</button>
+<button onclick="show('apsara')">🌸 Apsara</button>
+<button onclick="show('fav')">💖 Favourite</button>
+
+<!-- HOME -->
+<div id="home" class="section active">
+
+  <!-- FIXED PLAY BUTTON -->
+  <button id="homePlayBtn" onclick="playHomeMusic()">▶️ Play Home Music</button>
+
+  <p>
+    Saal tha 1997, charo aur badhti negativity dekhkar bhagwan se sabse zyada
+    positive, cheerful, lively, bindaas ladki ko banaya, aur isi tarah
+    <b>Rashi ji</b> ka janam hua ✨
+  </p>
+
+  <p>
+    Rashi jo har jagah jaati hai waha khushiya fail jaati hai.
+    Positivity, aura and joy ka dusra naam Rashi 💫
+  </p>
+
+  <p>
+    <b>Happy Birthday Rashi ❤️</b><br>
+    Keep spreading happiness like you always do 🌸
+  </p>
+
+  <div class="audio-box">
+    <audio id="homeAudio" controls preload="auto">
+      <source src="shivammmm_jbp___1766428615075.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+
+<!-- SLAY -->
+<div id="slay" class="section">
+  <h2>🔥 Slay</h2>
+  <img src="slay/slay1.jpg">
+  <img src="slay/slay2.jpg">
+  <img src="slay/slay3.jpg">
+  <img src="slay/slay4.jpg">
+
+  <div class="audio-box">
+    <audio controls>
+      <source src="gwadar__rides_1766428813935.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+
+<!-- APSARA -->
+<div id="apsara" class="section">
+  <h2>🌸 Apsara</h2>
+  <img src="apsara/apsara1.jpg">
+  <img src="apsara/apsara2.jpg">
+  <img src="apsara/apsara3.jpg">
+  <img src="apsara/apsara4.jpg">
+  <img src="apsara/apsara5.jpg">
+  <img src="apsara/apsara6.jpg">
+
+  <div class="audio-box">
+    <audio controls>
+      <source src="arishxeditzz_1766470963367.mp4" type="audio/mp4">
+    </audio>
+  </div>
+</div>
+
+<!-- FAVOURITE -->
+<div id="fav" class="section">
+  <h2>💖 My Favourite of Yours</h2>
+  <img src="favourite/fav1.jpg">
+  <img src="favourite/fav2.jpg">
+  <img src="favourite/fav3.jpg">
+  <img src="favourite/fav4.jpg">
+
+  <div class="audio-box">
+    <audio controls>
+      <source src="hiphop_gram_1766427279787.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+
+</body>
+</html>  border-radius:18px;
   margin:10px 0;
 }
 
